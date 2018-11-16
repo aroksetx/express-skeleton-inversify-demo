@@ -14,7 +14,7 @@ const middleWareContainer = new Container();
 servicesContainer.bind<FileUploadService>(DI_TYPES.FileUploadService).to(FileUploadService);
 
 
-middleWareContainer.bind<express.RequestHandler>('Morgan').toConstantValue(multer({ dest: `uploads/` }).single('avatar'));
+middleWareContainer.bind<express.RequestHandler>('Mul').toConstantValue(multer({ dest: `uploads/` }).single('avatar'));
 
 
 
