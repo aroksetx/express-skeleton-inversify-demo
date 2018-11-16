@@ -2,10 +2,22 @@
 import { Container } from 'inversify';
 import { DI_TYPES } from './DependencyTypes';
 import { FileUploadService } from '../services';
+import express = require('express');
+import multer = require('multer');
 
-export const bootDiContainer = new Container();
+const servicesContainer = new Container();
+const middleWareContainer = new Container();
 
 /**
  * Service binding
  */
-bootDiContainer.bind<FileUploadService>(DI_TYPES.FileUploadService).to(FileUploadService);
+servicesContainer.bind<FileUploadService>(DI_TYPES.FileUploadService).to(FileUploadService);
+
+
+middleWareContainer.bind<express.RequestHandler>('Morgan').toConstantValue(multer({ dest: `uploads/` }).single('avatar'));
+
+
+
+
+// Group two containers
+export const bootDiContainer = Container.merge(servicesContainer, middleWareContainer);

@@ -5,6 +5,7 @@ import { bootDiContainer } from "./core/DependencyContainers";
 
 import './controllers'
 import bodyParser = require("body-parser");
+
 import { eviromentDev } from "./enviroments";
 
 const server = new InversifyExpressServer(bootDiContainer);
