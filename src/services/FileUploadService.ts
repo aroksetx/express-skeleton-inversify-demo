@@ -19,6 +19,15 @@ export class FileUploadService {
 }
 
 
+// setup
+// const DB_NAME = 'db.json';
+// const COLLECTION_NAME = 'images';
+// const UPLOAD_PATH = 'uploads';
+// const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
+// const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
+
+
+
 
 // app.post('/profile', upload.single('avatar'), async (req, res) => {
 //     try {

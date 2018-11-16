@@ -5,33 +5,9 @@ import { bootDiContainer } from "./core/DependencyContainers";
 
 import './controllers'
 import bodyParser = require("body-parser");
+import { eviromentDev } from "./enviroments";
 
 const server = new InversifyExpressServer(bootDiContainer);
-
-
-// setup
-// const DB_NAME = 'db.json';
-// const COLLECTION_NAME = 'images';
-// const UPLOAD_PATH = 'uploads';
-// const upload = multer({ dest: `${UPLOAD_PATH}/` }); // multer configuration
-// const db = new Loki(`${UPLOAD_PATH}/${DB_NAME}`, { persistenceMethod: 'fs' });
-
-
-
-
-// app.post('/profile', upload.single('avatar'), async (req, res) => {
-//     try {
-//         console.log(req.file)
-//         const col = await loadCollection(COLLECTION_NAME, db);
-//         const data = col.insert(req.file);
-
-//         db.saveDatabase();
-//         res.send({ id: data.$loki, fileName: data.filename, originalName: data.originalname });
-//     } catch (err) {
-//         res.sendStatus(400);
-//     }
-// })
-
 
 // create server
 server.setConfig((app) => {
@@ -44,6 +20,6 @@ server.setConfig((app) => {
 });
 
 const app = server.build();
-app.listen(3000, () => {
-    console.log('listening on port 3000!');
+app.listen(eviromentDev.serverPort, () => {
+    console.log(`listening on port ${eviromentDev.serverPort}!`);
 });
